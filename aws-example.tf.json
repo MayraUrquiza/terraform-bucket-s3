@@ -1,0 +1,62 @@
+{
+  "terraform": {
+    "backend": {
+      "remote": {
+        "organization": "Telecom-Cloudvalley",
+        "workspaces": {
+          "name": "Telecom"
+        }
+      }
+    }
+  },
+
+  "provider": {
+    "aws": {
+      "region": "us-east-1",
+      "access_key": "${var.access_key}",
+      "secret_key": "${var.secret_key}",
+      "token": "${var.token}"
+    }
+  },
+
+  "resource": {
+    "aws_s3_bucket": {
+      "BucketS3ExampleTerraform": {
+        "bucket": "${var.bucket_name}"
+      }
+    }
+  },
+
+  "output": {
+    "bucket_id": {
+      "value": "${aws_s3_bucket.BucketS3ExampleTerraform.id}"
+        
+    },
+    "bucket_arn": {
+      "value": "${aws_s3_bucket.BucketS3ExampleTerraform.arn}"
+    }
+  },
+
+  "variable": {
+    "bucket_name": {
+      "description": "Bucket s3 name",
+      "type": "string",
+      "default": "bucket-test-cv-terraform"
+    },
+    "access_key": {
+      "description": "AWS access key",
+      "type": "string",
+      "default": "ASIA46RFB2C7MBAHEOMF"
+    },
+    "secret_key": {
+      "description": "AWS secret access key",
+      "type": "string",
+      "default": "Cw++TjJhyqG27OdbF4+C03O2LpyvK6F/25vl6BnU"
+    },
+    "token": {
+      "description": "AWS session token",
+      "type": "string",
+      "default": "IQoJb3JpZ2luX2VjEJX//////////wEaCXVzLWVhc3QtMSJIMEYCIQCsQYwKUuGHBDx5eKG+tQajyPyw0jWwWFfpcYyBblU6kQIhALT7R5ymK22o3W5AvqUUS0nusHWcdZzDkPPZx37NI+vPKpMDCB4QARoMODkwMjA5Njg1Njk0IgyuvEVaFxdo0DcSRTEq8AKnjmFcOex09XaqkOVDj85seuImMKgnQONahp2Xc8F0cbf00vA7gun8SBPcziDWp3fgCpyeKJ2Prg/VXdCwEHIRtEi7EQH9BThyUVWRlcdbhtMO77YkeFPm9iT0c5Pj+GiMhoIJbB9lBb5IWwNtD+FmhQtNaEWCp4b9bJnJv5y/MD5Ykiu1AMSD6x8V/ceWz0dQ4grRkkcQitr+wzpX4ldVAD38WYlh5SzgvQZvzrMInxR9ZTGYiVscB2Y/GVAvgAZfOvcB4oEiJQNRUjp6VuT97vuStMrJTP/Uhi3dyC2Fl0UQcdWks+mzZIaLhYdoazYz6raqROjENZw+iBdH6jlC+/5WPC2diXlM2X7m7DFPyKSt4O3m31nkIc17SgbeZaK4IZ69RsK28BADE87mY03YKIhRsg2hIbjcTkLL1TBV6nTk5f4WwdaWZxvUklPn08pd5bJj2/fN2RdWbtGOEb8LqCAOvM3LR2ivH+97c1RD4jCG8JeLBjqlARD8+es3qqa8wUk1nI1sou1Fj5aprVcX/7BxX8qvRaT7FhQESCcarRt8AQ+xhiw3QnAcl0osQ4s2altMY3R4vn2J1s0O+vYXismUSZLl837nqV5QxAauVQN5tBtzhGoYLJoA69C4z3QUgmgjfRUHJXTuGI0Uz5DQ4ny1VFqetGfgg9pZJSJxvbAp9umIiI3LG7ngBaMEp0omfxKQiL0GSAzIFKMvng=="
+    }
+  }
+}
